@@ -13,7 +13,7 @@
  * Refactored by [HaxNobody](https://gist.github.com/HaxNobody/7bde369d7a41348b8b91c1a4f358ea4a)
  * to extend functionality and add comments for my own understanding.
  * 
- * Additionally modified and extended by [Jim Stump](https://github.com/jimstump/trinket-m0-physical-mute-button-for-video-chat-2-button)
+ * Additionally modified and extended by [Jim Stump](https://github.com/jimstump/trinket-m0-physical-mute-button-for-video-chat)
  * to add MacOS support as well as additional video chat programs.  Also moved to
  * the [Adafruit Trinket M0](https://www.adafruit.com/product/3500) board.
  * 
