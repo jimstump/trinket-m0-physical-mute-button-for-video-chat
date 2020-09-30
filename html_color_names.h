@@ -1,7 +1,7 @@
 /**
  * This is a list of the HTML named colors as #define statements
- * 
- * Color names/values were take from https://htmlcolorcodes.com/color-names/
+ *
+ * Color names/values were taken from https://htmlcolorcodes.com/color-names/
  */
 
 // RED HTML COLOR NAMES
