@@ -85,6 +85,7 @@
 #include <Adafruit_DotStar.h>  // Library to drive DotStar RGB LEDs
 #include <Keyboard.h>          // Library for sending keystrokes as an HID device over USB.
 #include "OneButton.h"         // Library for button input functions
+#include "html_color_names.h"  // Some color definitions using HTML color names/hex values
 
 // GPIO Pins
 #define PIN_LED LED_BUILTIN
@@ -157,21 +158,6 @@ bool debugMode = true;
   Adafruit_DotStar strip(DOTSTAR_NUMPIXELS, PIN_DOTSTAR_DATA, PIN_DOTSTAR_CLOCK, DOTSTAR_BGR);
 #endif
 
-// Colors
-// Converted some HTML color names into HSV values for ease of use
-// https://htmlcolorcodes.com/color-names/
-// http://colorizer.org/
-#define HUE_RED             0           // 0 / 360 * 65535
-#define HUE_DARKORANGE   5996           // 32.94 / 360 * 65535
-#define HUE_GOLD         9209           // 50.59 / 360 * 65535
-#define HUE_YELLOW      10923           // 60 / 360 * 65535
-#define HUE_LIME        21845           // 120 / 360 * 65535
-#define HUE_CYAN        32768           // 180 / 360 * 65535
-#define HUE_DEEPSKYBLUE 35509           // 195.06 / 360 * 65535
-#define HUE_BLUE        43690           // 240 / 360 * 65535
-#define HUE_DARKVIOLET  51352, 255, 212 // 282.09 / 360 * 65535 | 100 / 100 * 255 | 83 / 100 * 255
-#define HUE_FUCHSIA     54613           // 300 / 360 * 65535
-#define HUE_DEEPPINK    59631, 235, 255 // 327.57 / 360 * 65535 |  92 / 100 * 255 | 83 / 100 * 255
 
 /**
  * The setup routine.
@@ -288,42 +274,42 @@ void setApplicationSettings() {
       debug("Application: Zoom (PC)");
       useMacShortcuts = false;
       currentApplication = APP_ZOOM;
-      updateDotStarColor(HUE_BLUE);
+      updateDotStarColor(COLOR_BLUE);
     } else if (sensorValue >= 73 && sensorValue < 219) {
       debug("Application: Google Meet (PC)");
       useMacShortcuts = false;
       currentApplication = APP_GOOGLE_MEET;
-      updateDotStarColor(HUE_LIME);
+      updateDotStarColor(COLOR_LIME);
     } else if (sensorValue >= 219 && sensorValue < 365) {
       debug("Application: MS Teams (PC)");
       useMacShortcuts = false;
       currentApplication = APP_MS_TEAMS;
-      updateDotStarColor(HUE_DARKVIOLET);
+      updateDotStarColor(COLOR_DARKVIOLET);
     } else if (sensorValue >= 365 && sensorValue < 512) {
       debug("Application: WebEx (PC)");
       useMacShortcuts = false;
       currentApplication = APP_WEBEX;
-      updateDotStarColor(HUE_GOLD);
+      updateDotStarColor(COLOR_GOLD);
     } else if (sensorValue >= 512 && sensorValue < 658) {
       debug("Application: Zoom (MAC)");
       useMacShortcuts = true;
       currentApplication = APP_ZOOM;
-      updateDotStarColor(HUE_BLUE);
+      updateDotStarColor(COLOR_BLUE);
     } else if (sensorValue >= 658 && sensorValue < 804) {
       debug("Application: Google Meet (MAC)");
       useMacShortcuts = true;
       currentApplication = APP_GOOGLE_MEET;
-      updateDotStarColor(HUE_LIME);
+      updateDotStarColor(COLOR_LIME);
     } else if (sensorValue >= 804 && sensorValue < 950) {
       debug("Application: MS Teams (MAC)");
       useMacShortcuts = true;
       currentApplication = APP_MS_TEAMS;
-      updateDotStarColor(HUE_DARKVIOLET);
+      updateDotStarColor(COLOR_DARKVIOLET);
     } else if (sensorValue >= 950) {
       debug("Application: WebEx (MAC)");
       useMacShortcuts = true;
       currentApplication = APP_WEBEX;
-      updateDotStarColor(HUE_GOLD);
+      updateDotStarColor(COLOR_GOLD);
     }
   #else
     debug("No Analog Input - Using Default Application: Zoom (PC)");
@@ -792,34 +778,15 @@ void turnButton2LedOff() {
 /**
  * Update the color of the onboard DotStar
  * 
- * hue has a range of 65536 but it's OK if we roll over.
+ * color is a single "packed" 32-bit RGB color.
  * 
- * Full saturation (255) and value/brightness (255) are used.
- * 
- * Use the HUE_* constants for ease of use
+ * Use the COLOR_* definitions from "html_color_names.h" for ease of use
  */
-void updateDotStarColor(uint16_t hue) {
+void updateDotStarColor(uint32_t color) {
   #if DOTSTAR_NUMPIXELS > 0 && defined(PIN_DOTSTAR_DATA) && defined(PIN_DOTSTAR_CLOCK)
-    updateDotStarColor(hue, 255, 255);
-  #endif
-}
-
-/**
- * Update the color of the onboard DotStar
- * 
- * hue has a range of 65536 but it's OK if we roll over
- * sat has a range of 255
- * val has a range of 255
- * 
- * Use the HUE_* constants for ease of use
- */
-void updateDotStarColor(uint16_t hue, uint8_t sat, uint8_t val) {
-  #if DOTSTAR_NUMPIXELS > 0 && defined(PIN_DOTSTAR_DATA) && defined(PIN_DOTSTAR_CLOCK)
-    // strip.ColorHSV() can take 1 or 3 arguments: a hue (0 to 65535) or
-    // we are optionally adding saturation and value (brightness) (each 0 to 255).
-    // it is passed through strip.gamma32() to provide 'truer' colors
+    // color is passed through strip.gamma32() to provide 'truer' colors
     // before filling the strip
-    strip.fill(strip.gamma32(strip.ColorHSV(hue, sat, val)));
+    strip.fill(strip.gamma32(color));
     strip.show();
   #endif
 }
