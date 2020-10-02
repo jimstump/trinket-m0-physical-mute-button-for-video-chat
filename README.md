@@ -199,15 +199,19 @@ However that does limit the portability of this, so that future may never come.
 
 ## Development Resources
 
-OneButton Docs:  
+OneButton Documentation:  
 https://github.com/mathertel/OneButton
 
 Keyboard Codes:  
-https://www.arduino.cc/reference/en/language/functions/usb/keyboard/keyboardmodifiers/
+https://www.arduino.cc/reference/en/language/functions/usb/keyboard/keyboardmodifiers/  
 https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf
 
 Adafruit Trinket M0 Pinout Documentation:  
 https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/pinouts
+
+Adafruit DotStar LED Documentation:  
+https://learn.adafruit.com/adafruit-dotstar-leds/arduino-library-use  
+https://github.com/adafruit/Adafruit_DotStar
 
 ## License
 
