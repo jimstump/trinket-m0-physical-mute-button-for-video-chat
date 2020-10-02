@@ -5,6 +5,8 @@
  * applications like Zoom, Google Meet, Microsoft Teams and WebEx using an
  * [Adafruit Trinket M0](https://www.adafruit.com/product/3500).
  * 
+ * See the [README](README.md) for more information.
+ * 
  * ## Acknowledgements
  * 
  * Thanks to Elliotmade for the inspiration on this project,
@@ -16,61 +18,6 @@
  * Additionally modified and extended by [Jim Stump](https://github.com/jimstump/trinket-m0-physical-mute-button-for-video-chat)
  * to add MacOS support as well as additional video chat programs.  Also moved to
  * the [Adafruit Trinket M0](https://www.adafruit.com/product/3500) board.
- * 
- * ## How Does This Work
- * 
- * This program will send USB HID keyboard presses to activate microphone and
- * video functions using the application's default keyboard shortcuts.
- *  * A momentary press on button 1 will toggle microphone mute on or off.
- *  * Press and hold button 1 to activate PTT (Push-to-Talk) functionality for
- *    supported applications (Zoom-only).  All other apps will perform the
- *    mute toggle.
- *  * A momentary press on button 2 will toggle video on or off for supported
- *    applications (not WebEx).
- * 
- * The following video chat programs are supported for selection:
- *  * Zoom
- *  * Google Meet
- *  * Microsoft Teams
- *  * Cisco WebEx
- * 
- * The video chat program can be chosen using a potentiometer dial attached to
- * the PIN_ANALOG_IN pin.  On startup and when the buttons are pressed, the
- * analog value from the potentiometer is read to determine which video chat
- * application and platform keyboard shortcuts should be used.  Once determined,
- * the color of the onboard DotStar pixel on the Trinket M0 will be changed to
- * indicate the current selection (Zoom is blue, Google Meet is Lime, Microsoft
- * Teams is dark violet, and WebEx is gold).
- * 
- * ## Current Hardware
- * 
- * While there are plenty of parts that can be used to build this project, I
- * thought it might be helpful to list out what I'm currently using in my
- * prototype.
- * 
- * * [Adafruit Trinket M0](https://www.adafruit.com/product/3500)
- * * [24mm Arcade Button with Built-in LED](https://www.amazon.com/dp/B06Y29LBJ4)
- * * [10K Linear Potentiometer](https://www.adafruit.com/product/562)
- * * [Potentiometer Knob](https://www.adafruit.com/product/2047)
- * * [Arcade Button Quick-Connect Wires](https://www.adafruit.com/product/1152)
- * * F/F and M/F jumper cables
- * * [Panel Mount USB C to Micro B Male](https://www.adafruit.com/product/4056)
- * * Still looking for a final enclosure, but [this 4.00 x 2.13 x 2.00 in one](https://www.polycase.com/ts-2420p) looks promising.
- * 
- * ## TODO
- * 
- *  * Try to read the current microphone mute/video state
- *    * This probably requires switching to a serial connection and running
- *      custom software on the machine something like https://github.com/toelke/google-hangouts-muter
- * 
- * ## Development Resources
- * 
- * OneButton Docs:
- * https://github.com/mathertel/OneButton
- * 
- * Keyboard Codes:
- * https://www.arduino.cc/reference/en/language/functions/usb/keyboard/keyboardmodifiers/
- * https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf
  * 
  * ## License
  * 
@@ -93,7 +40,7 @@
 #define PIN_BUTTON_1_LED 1
 #define PIN_BUTTON_2 3
 #define PIN_BUTTON_2_LED 4
-#define PIN_ANALOG_IN A1 // (D2 == A1 on the Trinket M0)å
+#define PIN_ANALOG_IN A1 // (D2 == A1 on the Trinket M0)
 #define PIN_DOTSTAR_DATA 7
 #define PIN_DOTSTAR_CLOCK 8
 
