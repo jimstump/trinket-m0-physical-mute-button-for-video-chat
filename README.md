@@ -111,6 +111,8 @@ If you want things to be more permanent you could solder your wires directly
 to the board and the component's pins, but we sure to install the components
 in your enclosure first.
 
+![Wiring Diagram](images/mute-button-wiring.png)
+
 ### Ground (GND)
 
 Since everything here connects to the ground (GND) pin on the board, I took
