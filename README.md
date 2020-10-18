@@ -14,7 +14,8 @@ to extend functionality and add super helpful comments.
 
 Additionally modified and extended by [Jim Stump](https://github.com/jimstump/trinket-m0-physical-mute-button-for-video-chat)
 to add MacOS support as well as additional video chat programs.  Also moved to
-the [Adafruit Trinket M0](https://www.adafruit.com/product/3500) board as features outgrew the Digispark ATtiny85's capabilities.
+the [Adafruit Trinket M0](https://www.adafruit.com/product/3500) board as
+features outgrew the Digispark ATtiny85's capabilities.
 
 ## How Does This Work
 
@@ -87,10 +88,10 @@ prototype.
 * [Potentiometer Knob](https://www.adafruit.com/product/2047)
 * [Arcade Button Quick-Connect Wires](https://www.adafruit.com/product/1152)
   (I used 4 pairs)
-* Female/Female (F/F) jumper cables (I used 4 cables)
-* [Panel Mount USB C to Micro B Connector](https://www.adafruit.com/product/4056)
+* Female/Female (F/F) jumper cables (I used 3 cables)
+* [Panel Mount Micro B Male to Micro B Female USB Connector](https://www.adafruit.com/product/3258)
 * [Polycase TS-2420P 4.00 x 2.13 x 2.00 inch Enclosure](https://www.polycase.com/ts-2420p)
-* The appropriate USB C cable to connect to your computer.  Since this is essentially just a keyboard, USB 2 speeds are adequate.
+* The appropriate micro USB cable to connect to your computer(s).
 
 ## Wiring Help
 
@@ -108,8 +109,8 @@ found it helpful when others were specific about how they wired everything
 together, so I'll do the same.  First, I soldered the header pins to the board
 so that they were on "top".  Then I wired everything up as described below.
 If you want things to be more permanent you could solder your wires directly
-to the board and the component's pins, but we sure to install the components
-in your enclosure first.
+to the board and the components' pins, but be sure to install the components
+in your enclosure first (specifically the buttons).
 
 ![Wiring Diagram](images/mute-button-wiring.png)
 
@@ -179,24 +180,27 @@ So, I started out this project by making a "case" using cardboard and packing
 tape while prototyping/beta testing.  That won't do for the long haul though.
 
 I settled on a 4 inch by ~2 inch by 2 inch plastic enclosure.  I drilled 2 holes
-in the top of the enclosure centered at the 1/3 and 2/3 points to mount the
-arcade buttons for the microphone and video toggle.  I drilled a smaller hole
-roughly in the center of the front of the enclosure for the potentiometer.
-Finally, I made a rectangular hole in the lower center of the back panel for
-the USB C jack.
+evenly spaced in the top of the enclosure to mount the arcade buttons for the
+microphone and video toggle.  I drilled a smaller hole roughly in the center of
+the front of the enclosure for the potentiometer.  Finally, I made a
+rectangular hole in the lower center of the back panel for the USB jack.
 
 At this point, everything should be installed in the enclosure and wired up.
 Plug it into your computer, open up the code into your already
-installed/configured installation of the Arduino IDE and program it.  Once it
-reboots you should be good to go!
+installed/configured installation of the Arduino IDE and program it.  If you
+are using the Trinket M0, you might need to double-click the reset button to
+get it recognized by the Arduino IDE and if the onboard DotStar is red, try a
+different USB cable (I ran into an issue where about half of my stockpile of
+micro USB cables were charging-only and didn't support data and guess which one
+I grabbed first).  Once it reboots you should be good to go!
 
 ## TODO
 
 At some point in the future, I'd like to try to read the current microphone
 mute/video state of the chat application.  However, this almost certainly
-requires switching to a serial connection and running custom software on the
-machine to figure out the state and communicate that to the microcontroller,
-similarly to [toelke/google-hangouts-muter](https://github.com/toelke/google-hangouts-muter).
+requires switching to a standard serial connection and running custom software
+on the machine to figure out the state and communicate that to the
+microcontroller, similarly to [toelke/google-hangouts-muter](https://github.com/toelke/google-hangouts-muter).
 However that does limit the portability of this, so that future may never come.
 
 ## Development Resources
