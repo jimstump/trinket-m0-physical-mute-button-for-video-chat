@@ -48,6 +48,8 @@ I didn't get a chance to make that more easily configurable yet).
 
 ## MacOS Keyboard Setup Assistant
 
+![MacOS Keyboard Setup Assistant Window](images/macos-keyboard-setup-assistant.png)
+
 As mentioned in the "How Does This Work" section, this mute button
 device/program identifies itself as a keyboard to the connecting computer so
 that it can send the appropriate keyboard shortcuts when the buttons are
@@ -92,6 +94,9 @@ prototype.
 * [Panel Mount Micro B Male to Micro B Female USB Connector](https://www.adafruit.com/product/3258)
 * [Polycase TS-2420P 4.00 x 2.13 x 2.00 inch Enclosure](https://www.polycase.com/ts-2420p)
 * The appropriate micro USB cable to connect to your computer(s).
+* [6x2mm Rubber Feet](https://www.amazon.com/dp/B06XCNM69B) for the bottom of the enclosure.
+* [1/2 Inch Diameter Round Labels, Glossy Clear Film](https://www.avery.com/blank/labels/94503) for the button graphics.
+* [1 5/8 Inch Diameter Round Label, Matte White](https://www.avery.com/blank/labels/94507) for the Application Selector/Potentiometer label.
 
 ## Wiring Help
 
@@ -179,20 +184,57 @@ set the value of `PIN_ANALOG_IN` correctly for use with analog input.
 So, I started out this project by making a "case" using cardboard and packing
 tape while prototyping/beta testing.  That won't do for the long haul though.
 
-I settled on a 4 inch by ~2 inch by 2 inch plastic enclosure.  I drilled 2 holes
-evenly spaced in the top of the enclosure to mount the arcade buttons for the
-microphone and video toggle.  I drilled a smaller hole roughly in the center of
-the front of the enclosure for the potentiometer.  Finally, I made a
-rectangular hole in the lower center of the back panel for the USB jack.
+I chose a 4 inch by ~2 inch by 2 inch plastic enclosure from Polycase.  I
+drilled 2 holes evenly spaced in the top of the enclosure to mount the arcade
+buttons for the microphone and video toggle.  To do this, I centered my 1"
+drill bit 1 5/32" from the edge of the enclosure.  For the potentiometer, I
+drilled a 5/16" hole in the center of the front of the enclosure and also made
+a small slit using a 1/16" bit for the alignment peg.  Finally, I made a
+rectangular hole in the lower center of the back panel for the USB jack using a
+series of 1/16" drill holes, smoothed out with a utility knife and some
+sandpaper.
 
-At this point, everything should be installed in the enclosure and wired up.
-Plug it into your computer, open up the code into your already
-installed/configured installation of the Arduino IDE and program it.  If you
-are using the Trinket M0, you might need to double-click the reset button to
-get it recognized by the Arduino IDE and if the onboard DotStar is red, try a
-different USB cable (I ran into an issue where about half of my stockpile of
-micro USB cables were charging-only and didn't support data and guess which one
-I grabbed first).  Once it reboots you should be good to go!
+To help drill the holes as precisely as possible, I made some
+patterns/templates using paper.  I measured exactly where the holes' center
+needed to be and drew the shape of the USB jack.  Then I taped the paper
+templates to the enclosure and drilled 1/16" pilot holes through the paper,
+exactly where they needed to be.  I took the paper off to complete the larger
+holes, so that I could reuse the templates.
+
+Even though the screws on the enclosure were recessed, I could just barely feel
+the screwheads with my finger.  Since I was afraid of scratching my desk or
+computer, I opted to add some tiny rubber feet to the bottom for some
+additional protection.
+
+### Labels
+
+To complete the project, I printed Font Awesome
+[microphone](https://fontawesome.com/icons/microphone?style=solid) and
+[video](https://fontawesome.com/icons/video?style=solid) icons on 1/2" round
+clear labels for the arcade buttons.  I used a 1 5/8" round white label for the
+application selector.
+
+## Programming the Board
+
+Since this is Arduino code, the first thing you'll need to do is setup and
+configure the Arduino IDE on your computer.  If you are on Windows, you will
+also need to install the correct drivers for your microcontroller board.  If
+you are using the Trinket M0, you can get the
+[Windows drivers here](https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/windows-driver-installation)
+and the [Arduino IDE setup steps here](https://learn.adafruit.com/adafruit-trinket-m0-circuitpython-arduino/arduino-ide-setup).
+
+Once the Arduino IDE is all setup, you'll need the code in this repository, so
+either clone the repository or download it as a zip file and extract it.  Then
+it _should_ be as simple as opening the .ino file in the Arduino IDE, making
+sure the correct board type is selected, and pressing the "Upload" button to
+compile and install the program.  Once it reboots you should be good to go!
+
+One thing to note, if you are using the Trinket M0, you might need to double
+click the reset button once the board is plugged into your computer to get it
+recognized by the Arduino IDE.  If the onboard DotStar is red at that point,
+try a different USB cable.  I ran into an issue where about half of my
+stockpile of micro USB cables were charging-only and didn't support data.
+Guess which one I grabbed first.  I wasted a bit of time on that initially.
 
 ## TODO
 
